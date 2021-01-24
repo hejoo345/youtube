@@ -1,0 +1,9 @@
+:root {
+  --black: #202020;
+  --white: #ffffff;
+}
+.navbar {
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+}
