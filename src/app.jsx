@@ -1,15 +1,82 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './app.css';
 import Navbar from './components/navbar';
-import Popular_list from './components/popular_list';
+import VideoList from './components/video_list';
+import VideoPlayer from './components/videoplayer';
 
-function App() {
-  return  (
-    <>
-    <Navbar/>
-    <Popular_list/>
-    </>
-  )  ;
+class App extends Component {
+  state = {
+    items: [],
+    videoInfo : [],
+    currentVideo : '',
+  }
+  callPopularList =async () =>{
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+
+      const items = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            return result.items;
+            // console.log(items.length);
+        })
+        .catch(error => console.log('error', error));
+
+        this.setState({items,currentVideo:''});
+        // console.log(this.state.items);
+  }
+
+  componentDidMount(){
+      this.callPopularList();
+  }
+
+  getVideoId = (video)=>{
+    if(video.id.videoId) return video.id.videoId;
+    return video.id;
+  }
+
+  handleViedoPlayer = async (video) =>{
+    const videoId = await this.getVideoId(video);
+    this.setState({videoInfo:video, currentVideo : videoId});
+  }
+
+  handleSearch=async (item)=>{
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    const searchItems = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${item}&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        return result.items;
+      })
+      .catch(error => console.log('error', error));
+      this.setState({items : searchItems, currentVideo : ''});
+  }
+
+  goHome = () =>{
+    window.location='/';
+  }
+  
+  render(){
+    return  (
+      <>
+      <Navbar
+      onHome={this.goHome}
+      onSearch={this.handleSearch}/>
+      <VideoPlayer
+      video={this.state.videoInfo}
+      currentVideo={this.state.currentVideo}/>
+      <VideoList
+      items={this.state.items}
+      onVideoPlayer={this.handleViedoPlayer}/>
+      </>
+    );
+  }
 }
 
 export default App;

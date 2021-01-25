@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+import VideoItem from './video_item';
+import styles from './video_list.module.css';
+
+class VideoList extends Component {
+    render() {
+        return (
+            <ul className={styles.videoList}>
+                {
+                    this.props.items.map((item)=>(
+                        <VideoItem                        
+                        key={item.etag}
+                        item={item}
+                        onVideoPlayer={this.props.onVideoPlayer}/>
+                    ))
+                }
+            </ul>
+        );
+    }
+}
+
+export default VideoList;

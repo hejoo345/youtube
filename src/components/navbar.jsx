@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import styles from './navbar.module.css';
+import Search from './search';
 
 class Navbar extends Component {
     render() {
         return (
             <nav className={styles.navbar}>
-                <span><i className=" fab fa-youtube"></i></span>
-                <span className="title">Youtube</span>
-                <form>
-                    <input className="search" type="text" placeholder="Search.."/>
-                    <button className="serch-btn"><i className="fas fa-search"></i></button>
-                </form>
+                <div>
+                    <span className={styles.logo} onClick={this.props.onHome}><button className="fab fa-youtube" ></button></span>
+                    <span className="title">Youtube</span>
+                </div>
+                
+                <Search
+                onSearch={this.props.onSearch}/>
                 
             </nav>
         );

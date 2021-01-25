@@ -1,6 +1,13 @@
-.popularItem {
+.videoItem {
   display: flex;
   box-shadow: 0.2rem 0.2rem lightgray;
   margin: 1rem;
   cursor: pointer;
+}
+.img {
+  flex: 1 1 40%;
+}
+.info {
+  flex: 1 1 60%;
+  flex-direction: column;
 }
