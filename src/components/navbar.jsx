@@ -7,13 +7,11 @@ class Navbar extends Component {
         return (
             <nav className={styles.navbar}>
                 <div>
-                    <span className={styles.logo} onClick={this.props.onHome}><button className="fab fa-youtube" ></button></span>
-                    <span className="title">Youtube</span>
+                <span className={styles.logo} onClick={this.props.onHome}><button className="fab fa-youtube" ></button></span>
+                <span className="title">Youtube</span>
                 </div>
-                
-                <Search
-                onSearch={this.props.onSearch}/>
-                
+                <Search onSearch={this.props.onSearch}/>
+                <span><i className="fas fa-user-circle"></i></span>            
             </nav>
         );
     }

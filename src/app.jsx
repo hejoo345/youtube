@@ -9,6 +9,7 @@ class App extends Component {
     items: [],
     videoInfo : [],
     currentVideo : '',
+    channelImg: '',
   }
   callPopularList =async () =>{
     var requestOptions = {
@@ -27,7 +28,6 @@ class App extends Component {
         this.setState({items,currentVideo:''});
         // console.log(this.state.items);
   }
-
   componentDidMount(){
       this.callPopularList();
   }
@@ -37,9 +37,10 @@ class App extends Component {
     return video.id;
   }
 
-  handleViedoPlayer = async (video) =>{
+  handleViedoPlayer = async (video,img) =>{
+    window.scrollTo(0,0);
     const videoId = await this.getVideoId(video);
-    this.setState({videoInfo:video, currentVideo : videoId});
+    this.setState({videoInfo:video, currentVideo : videoId, channelImg : img});
   }
 
   handleSearch=async (item)=>{
@@ -68,12 +69,15 @@ class App extends Component {
       <Navbar
       onHome={this.goHome}
       onSearch={this.handleSearch}/>
+      <div className="video">
       <VideoPlayer
       video={this.state.videoInfo}
-      currentVideo={this.state.currentVideo}/>
+      currentVideo={this.state.currentVideo}
+      channelImg={this.state.channelImg}/>
       <VideoList
       items={this.state.items}
       onVideoPlayer={this.handleViedoPlayer}/>
+      </div>
       </>
     );
   }

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-
+import styles from './search.module.css'
  const Search = memo((props) =>  {
     const inputRef = React.createRef();
     const formRef = React.createRef();
@@ -11,9 +11,9 @@ import React, { memo } from 'react';
         formRef.current.reset();
    }
    return (
-           <form ref={formRef} onSubmit={onSubmit}>
-               <input ref={inputRef} className="search" type="text" placeholder="Search.." />
-               <button className="serch-btn"><i className="fas fa-search"></i></button>
+           <form className={styles.searchbar} ref={formRef} onSubmit={onSubmit}>
+               <input ref={inputRef} className={styles.search} type="text" placeholder="Search.." />
+               <button className={styles.searchBtn}><i className="fas fa-search"></i></button>
            </form>
    );
   
