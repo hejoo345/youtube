@@ -12,16 +12,19 @@ const  VideoPlayer = (props) => {
     }
     return (
         <div className={styles.play}>
-            {/* <div className={styles.videoPlay}> */}
+            <div className={styles.videoPlay}>
                 <iframe className={styles.iframe} id="ytplayer" title={videoInfo.snippet.title} type="text/html" 
                 src={src}
                 frameBorder="0"></iframe>
-            {/* </div> */}
-            
+            </div>
+             
             <span className={styles.title}>{videoInfo.snippet.title}</span>
             <div className={styles.channelTitle}>
                 <img className={styles.channelImg} src={channelImg} alt="channelthumbnail"></img>            
                 <span>{videoInfo.snippet.channelTitle}</span>
+            </div>
+            <div className={styles.description}>
+                <span>{videoInfo.snippet.description}</span>
             </div>
         </div>
     );

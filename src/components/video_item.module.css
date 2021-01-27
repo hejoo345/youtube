@@ -1,15 +1,26 @@
+.container {
+  /* box-shadow: 0.2rem 0.2rem lightgray; */
+  /* margin-bottom: 1rem; */
+  /* margin: 0.5rem 1rem; */
+  width: 50%;
+  padding: 0.2em;
+  /* box-sizing: border-box; */
+}
 .videoItem {
   display: flex;
-  box-shadow: 0.2rem 0.2rem lightgray;
-  /* margin-bottom: 1rem; */
-  margin: 0.5rem 1rem;
+  align-items: center;
+  border: 1px solid lightgray;
   cursor: pointer;
-  list-style: none;
-  width: 100%;
+  transition: transform 250ms ease-in;
+}
+.videoItem:hover {
+  transform: scale(1.02);
 }
 .img {
   display: flex;
   padding-right: 0.8rem;
+  width: 40%;
+  height: 100%;
 }
 .info {
   display: flex;
@@ -17,8 +28,8 @@
 }
 .title {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  /* -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; */
   font-weight: 400;
   font-size: 1.2rem;
   margin-bottom: 0.5em;

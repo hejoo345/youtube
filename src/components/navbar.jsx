@@ -11,7 +11,7 @@ class Navbar extends Component {
                 <span className="title">Youtube</span>
                 </div>
                 <Search onSearch={this.props.onSearch}/>
-                <span><i className="fas fa-user-circle"></i></span>            
+                <span className={styles.user}><i className="fas fa-user-circle"></i></span>            
             </nav>
         );
     }

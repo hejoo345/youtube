@@ -12,7 +12,7 @@ class App extends Component {
     channelImg: '',
   }
   callPopularList =async () =>{
-    var requestOptions = {
+    const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       };
@@ -45,12 +45,12 @@ class App extends Component {
 
   handleSearch=async (item)=>{
 
-    var requestOptions = {
+    const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
     
-    const searchItems = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${item}&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA`, requestOptions)
+    const searchItems = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${item}&type=video&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA`, requestOptions)
       .then(response => response.json())
       .then(result => {
         return result.items;
