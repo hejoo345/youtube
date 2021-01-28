@@ -17,9 +17,15 @@ class Youtube{
     async search(query){
       return await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`,
         this.getRequestOptions)
-      .then(response => response.json())
-      .then(result => result.items);
-      
+            .then(response => response.json())
+            .then(result => result.items);
+    }
+
+    async callChannel(channelId){
+       return await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${this.key}`,
+       this.getRequestOptions)
+            .then(response => response.json())
+            .then(result =>  result.items);
     }
 }
 

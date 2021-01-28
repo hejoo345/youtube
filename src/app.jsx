@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './app.css';
+import styles from './app.module.css';
 import Navbar from './components/navbar';
 import VideoList from './components/video_list';
 import VideoPlayer from './components/videoplayer';
-
 class App extends Component {
   state = {
     items: [],
@@ -53,12 +52,13 @@ class App extends Component {
       <Navbar
       onHome={this.goHome}
       onSearch={this.handleSearch}/>
-      <div className="video">
+      <div className={styles.video}>
       <VideoPlayer
       video={this.state.videoInfo}
       currentVideo={this.state.currentVideo}
       channelImg={this.state.channelImg}/>
       <VideoList
+      youtube={this.props.youtube}
       items={this.state.items}
       onVideoPlayer={this.handleViedoPlayer}
       display={(this.state.currentVideo)?'list':'grid'}/>

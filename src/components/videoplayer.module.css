@@ -3,8 +3,6 @@
   flex-direction: column;
   padding: 1rem;
 }
-.videoPlay {
-}
 .iframe {
   position: sticky;
 
@@ -19,6 +17,7 @@
   padding: 1rem 0;
   font-size: 1.2rem;
   font-weight: 500;
+  color: white;
 }
 .channelImg {
   border-radius: 50%;
@@ -35,6 +34,7 @@
   padding: 1rem 0;
 }
 .description {
+  color: white;
   padding-left: 3rem;
 }
 /* @media screen and (max-width: 48rem) {

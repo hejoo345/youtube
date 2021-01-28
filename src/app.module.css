@@ -1,5 +1,9 @@
+body {
+  background-color: black;
+}
 .video {
   display: flex;
+  background-color: black;
 }
 @media screen and (max-width: 48rem) {
   .video {

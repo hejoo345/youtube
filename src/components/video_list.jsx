@@ -8,7 +8,8 @@ class VideoList extends Component {
             <ul className={styles.videoList}>
                 {
                     this.props.items.map((item)=>(
-                        <VideoItem                        
+                        <VideoItem        
+                        youtube={this.props.youtube}             
                         key={item.etag}
                         item={item}
                         onVideoPlayer={this.props.onVideoPlayer}

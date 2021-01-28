@@ -6,13 +6,12 @@ import styles from './search.module.css'
     const onSubmit = (event) =>{
         event.preventDefault();
         const searchValue = inputRef.current.value;
-    //    console.log(search);
         searchValue && props.onSearch(searchValue);
         formRef.current.reset();
    }
    return (
            <form className={styles.searchbar} ref={formRef} onSubmit={onSubmit}>
-               <input ref={inputRef} className={styles.search} type="text" placeholder="Search.." />
+               <input ref={inputRef} className={styles.search} type="text" placeholder="검색" />
                <button className={styles.searchBtn}><i className="fas fa-search"></i></button>
            </form>
    );
