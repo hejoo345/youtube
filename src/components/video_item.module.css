@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid lightgray; */
   cursor: pointer;
   transition: transform 250ms ease-in;
 }
@@ -30,8 +29,6 @@
 }
 .title {
   display: -webkit-box;
-  /* -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; */
   font-weight: 400;
   font-size: 1.2rem;
   margin-bottom: 0.5em;
