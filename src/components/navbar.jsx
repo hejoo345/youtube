@@ -7,7 +7,7 @@ class Navbar extends Component {
         return (
             <nav className={styles.navbar}>
                 <div className={styles.home} onClick={this.props.onHome}>
-                    <img className={styles.logo} src='/images/logo.png' alt="logo"/>
+                    <img className={styles.logo} src='./images/logo.png' alt="logo"/>
                     <span className="title">Youtube</span>
                 </div>
                 <Search onSearch={this.props.onSearch}/>
