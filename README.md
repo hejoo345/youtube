@@ -7,7 +7,7 @@ Class Component를 주로 사용하였고,
 Youtube Data API를 사용하여 데이터를 가져왔다.
 
 ## Built With
-- HTMLㅁ
+- HTML
 - PostCSS
 - REACT.js
 
