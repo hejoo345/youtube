@@ -33,7 +33,20 @@ Youtube Data API를 사용하여 데이터를 가져왔다.
 fetch가 끝나지 않은 상황에서 setState를 해서 그런거였다.
 그래서 async 로 선언해주고 await을 써서 값이 모두 넘어왔을 때 setState를 해주도록 설정했다.
 
+
+     async mostPopular(){
+  
+      return  await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`,
+          this.getRequestOptions)
+            .then(response => response.json())
+            .then(result => result.items);
+            
+      }
+
 처음에는 API KEY를 코드에 노출되도록 했지만 .env파일에 넣고 gitignore에 설정하여 노출을 방지하도록 했다.
+
+    # API KEYs
+    .env
 
 채널 썸네일을 설정하고 싶었지만 동영상 아이템에서 바로 데이터를 얻을 수가 없었다.
 그래서 channelId를 써서 한 번 더 API을 호출해주었다.
