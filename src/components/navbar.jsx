@@ -6,9 +6,9 @@ class Navbar extends Component {
     render() {
         return (
             <nav className={styles.navbar}>
-                <div>
-                <span className={styles.logo} onClick={this.props.onHome}><button className="fab fa-youtube" ></button></span>
-                <span className="title">Youtube</span>
+                <div className={styles.home} onClick={this.props.onHome}>
+                    <img className={styles.logo} src='/images/logo.png' alt="logo"/>
+                    <span className="title">Youtube</span>
                 </div>
                 <Search onSearch={this.props.onSearch}/>
                 <span className={styles.user}><i className="fas fa-user-circle"></i></span>            

@@ -11,7 +11,8 @@ class VideoList extends Component {
                         <VideoItem                        
                         key={item.etag}
                         item={item}
-                        onVideoPlayer={this.props.onVideoPlayer}/>
+                        onVideoPlayer={this.props.onVideoPlayer}
+                        display={this.props.display}/>
                     ))
                 }
             </ul>

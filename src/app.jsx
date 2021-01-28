@@ -12,22 +12,13 @@ class App extends Component {
     channelImg: '',
   }
   callPopularList =async () =>{
-    const requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-
-      const items = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            return result.items;
-            // console.log(items.length);
-        })
-        .catch(error => console.log('error', error));
-
-        this.setState({items,currentVideo:''});
-        // console.log(this.state.items);
+    
+    this.props.youtube.mostPopular()
+    .then(result=>{
+      this.setState({items:result, currentVideo:'' })
+    })
   }
+
   componentDidMount(){
       this.callPopularList();
   }
@@ -44,19 +35,12 @@ class App extends Component {
   }
 
   handleSearch=async (item)=>{
+    const searchItems = this.props.youtube;
 
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    const searchItems = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${item}&type=video&key=AIzaSyDzWkk8lHi2vInxGquy-qiS07HskVezHQA`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        return result.items;
-      })
-      .catch(error => console.log('error', error));
-      this.setState({items : searchItems, currentVideo : ''});
+    searchItems.search(item)
+    .then(result => {
+        this.setState({items : result, currentVideo : ''})
+    });
   }
 
   goHome = () =>{
@@ -76,7 +60,8 @@ class App extends Component {
       channelImg={this.state.channelImg}/>
       <VideoList
       items={this.state.items}
-      onVideoPlayer={this.handleViedoPlayer}/>
+      onVideoPlayer={this.handleViedoPlayer}
+      display={(this.state.currentVideo)?'list':'grid'}/>
       </div>
       </>
     );
